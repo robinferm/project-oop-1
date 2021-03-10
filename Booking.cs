@@ -6,26 +6,29 @@ namespace OOP_projekt1
 {
     abstract class Booking
     {
-        private int bookingID;
+        private int _bookingID;
         public int BookingID
         {
-            get { return bookingID; }
-            set { bookingID = value; }
+            get { return _bookingID; }
+            set { _bookingID = value; }
         }
-        private DateTime time;
+        private DateTime _time;
         public DateTime Time
         {
-            get { return time; }
-            set { time = value; }
+            get { return _time; }
+            set { _time = value; }
         }
-        private Member member;
+        private Member _member;
         public Member Member
         {
-            get { return member; }
-            set { member = value; }
+            get { return _member; }
+            set { _member = value; }
         }
-        public Booking()
+        public Booking(int bookingID, DateTime time, Member member)
         {
+            _bookingID = bookingID;
+            _time = time;
+            _member = member;
 
         }
     }
