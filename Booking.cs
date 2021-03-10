@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP_projekt1
 {
-    class Booking
+    abstract class Booking
     {
         private int bookingID;
         public int BookingID
