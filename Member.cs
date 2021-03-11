@@ -7,6 +7,7 @@ namespace OOP_projekt1
 {
     class Member : Person
     {
+        private List<Booking> _bookings;
         public Member(int u, string fn, string ln, string pw, string pn)
         {
             UserID = u;
@@ -14,6 +15,7 @@ namespace OOP_projekt1
             LastName = ln;
             PassWord = pw;
             PhoneNumber = pn;
+            _bookings = new List<Booking>();
         }
         public bool EditBooking()//int bookingID, List<Booking> schedule
         {                        // fix input for methods
@@ -24,8 +26,15 @@ namespace OOP_projekt1
         {
             return true;
         }
-        public bool ReserveBooking()//int bookingID, List<Booking> schedule
+        public bool ReserveBooking(Booking booking, List<Booking> schedule)
         {
+            // Add booking to member bookings
+            _bookings.Add(booking);
+
+            // Find booking object in schedule and add this member to the selected booking
+            schedule.Find(x => x.BookingID == booking.BookingID).UserID = this.UserID;
+
+            // Todo: only reserve if no other member has reseved the booking, or if the group/opengymbooking isn't full
             return true;
         }
     }
