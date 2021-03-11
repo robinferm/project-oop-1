@@ -18,17 +18,17 @@ namespace OOP_projekt1
             get { return _time; }
             set { _time = value; }
         }
-        private Member _member;
-        public Member Member
+        private int _userID;
+        public int UserID
         {
-            get { return _member; }
-            set { _member = value; }
+            get { return _userID; }
+            set { _userID = value; }
         }
-        public Booking(int bookingID, DateTime time, Member member)
+        public Booking(int bookingID, DateTime time, int userID)
         {
             _bookingID = bookingID;
             _time = time;
-            _member = member;
+            _userID = userID;
 
         }
     }
