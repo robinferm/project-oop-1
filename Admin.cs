@@ -14,10 +14,10 @@ namespace OOP_projekt1
             PassWord = pw;
             PhoneNumber = pn;
         }
-        public void CreateSchedule()
-        {
-
-        }
+        //public Schedule CreateSchedule() ---Fixa return value
+        //{
+           
+        //}
         public void EditSchedule()
         {
 
