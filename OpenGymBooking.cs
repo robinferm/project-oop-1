@@ -6,7 +6,7 @@ namespace OOP_projekt1
 {
     class OpenGymBooking : Booking
     {
-        OpenGymBooking(int bookingID, DateTime time, int userID) : base(bookingID, time, userID)
+        OpenGymBooking(int bookingID, DateTime time, string username) : base(bookingID, time, username)
         {
 
         }

@@ -6,11 +6,11 @@ namespace OOP_projekt1
 {
     class Person
     {
-        private int userID;
-        public int UserID
+        private string username;
+        public string Username
         {
-            get { return userID; } 
-            set { userID = value; }
+            get { return username; } 
+            set { username = value; }
         }
         private string firstName;
         public string FirstName
