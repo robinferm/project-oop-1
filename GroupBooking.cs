@@ -9,7 +9,7 @@ namespace OOP_projekt1
         private PersonalTrainer _PT;
         private string _room;
 
-        public GroupBooking(PersonalTrainer PT, string room, int bookingID, DateTime time, Member member) : base(bookingID, time, member)
+        public GroupBooking(PersonalTrainer PT, string room, int bookingID, DateTime time, int userID) : base(bookingID, time, userID)
         {
             _PT = PT;
             _room = room;

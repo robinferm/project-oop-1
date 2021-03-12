@@ -7,7 +7,7 @@ namespace OOP_projekt1
     class Consultation : Booking
     {
         private PersonalTrainer _PT;
-        Consultation(PersonalTrainer PT, int bookingID, DateTime time, Member member) : base(bookingID, time, member)
+        Consultation(PersonalTrainer PT, int bookingID, DateTime time, int userID) : base(bookingID, time, userID)
         {
             _PT = PT;
         }
