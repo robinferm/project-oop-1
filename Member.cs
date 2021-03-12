@@ -8,9 +8,9 @@ namespace OOP_projekt1
     class Member : Person
     {
         private List<Booking> _bookings;
-        public Member(int u, string fn, string ln, string pw, string pn)
+        public Member(string u, string fn, string ln, string pw, string pn)
         {
-            UserID = u;
+            Username = u;
             FirstName = fn;
             LastName = ln;
             PassWord = pw;
@@ -32,7 +32,7 @@ namespace OOP_projekt1
             _bookings.Add(booking);
 
             // Find booking object in schedule and add this member to the selected booking
-            schedule.Find(x => x.BookingID == booking.BookingID).UserID = this.UserID;
+            schedule.Find(x => x.BookingID == booking.BookingID).Username = this.Username;
 
             // Todo: only reserve if no other member has reseved the booking, or if the group/opengymbooking isn't full
             return true;

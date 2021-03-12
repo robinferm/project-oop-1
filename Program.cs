@@ -15,19 +15,12 @@ namespace OOP_projekt1
             }
             
         }
-        static void Register(string fn, string ln, string pw, string pn, List<Member> members)
+        static string Register(string fn, string ln, string pw, string pn, List<Member> members)
         {
-            int userID = members.Count+1;
-            Member newMember = new Member(userID, fn, ln, pw, pn);
+            string username = fn.Substring(0,3) + ln.Substring(0,3);
+            Member newMember = new Member(username, fn, ln, pw, pn);
             members.Add(newMember);
-            foreach (Member item in members)
-            {
-                Console.WriteLine(newMember.UserID);
-                Console.WriteLine(newMember.FirstName);
-                Console.WriteLine(newMember.LastName);
-                Console.WriteLine(newMember.PassWord);
-                Console.WriteLine(newMember.PhoneNumber);
-            }
+            return username;
         }
 
         static void Menu(List<Member> members)
@@ -42,6 +35,7 @@ namespace OOP_projekt1
 
             switch (choice)
             {
+                // Register account
                 case 1:
                     Console.WriteLine("First name: ");
                     string firstName = Console.ReadLine();
@@ -52,24 +46,39 @@ namespace OOP_projekt1
                     Console.WriteLine("Phonenumber: ");
                     string phoneNumber = Console.ReadLine();
 
-                    Register(firstName, lastName, password, phoneNumber, members);
+                    string registered = Register(firstName, lastName, password, phoneNumber, members);
+                    if (registered != null)
+                    {
+                        Console.WriteLine($"You are registered with username {registered}");
+                        Console.WriteLine("Press enter to go back to main menu");
+                        Console.ReadKey();
+                    }
+                    
                     break;
 
+                // Sign in
                 case 2:
-                    for (int i = 0; i < members.Count; i++)
-                    {
-                        Console.WriteLine($"{i+1} {members[i].FirstName} {members[i].LastName}");
-                    }
-                    Console.WriteLine("UserID: ");
-                    int userID = int.Parse(Console.ReadLine());
-                    Member userExist = members.Find(x => x.UserID == userID);
+                    Console.WriteLine("Username: ");
+                    string username = Console.ReadLine();
+                    Member userExist = members.Find(x => x.Username == username);
                     if (userExist != null)
                     {
-                        Console.WriteLine("Password: ");
-                        string pw = Console.ReadLine();
-                        if(userExist.PassWord == pw)
-                        {
-                            SignedIn(userExist.FirstName);
+
+                        int PWTries = 0;
+                        int maxPWTries = 3;
+                        while(PWTries < maxPWTries) {
+                            Console.WriteLine("Password: ");
+                            string pw = Console.ReadLine();
+                            PWTries++;
+                            if (userExist.PassWord == pw)
+                            {
+                                SignedIn(userExist.FirstName);
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Password is incorrect, you have {maxPWTries - PWTries} tries left");
+                            }
                         }
                     }
                     break;
